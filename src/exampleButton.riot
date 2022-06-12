@@ -1,0 +1,28 @@
+<example-button>
+    <button class="button" onclick={ (event) => { handleClick(event) } }>
+        Open
+    </button>
+
+    <script>
+
+        // store for sidebar
+        import sidebarStore from './exampleStore.js'
+
+        /**
+         *  example to open sidebar form
+         *
+         *  @author Björn Hase
+         *  @license http://opensource.org/licenses/MIT The MIT License
+         *  @link https://gitea.node001.net/tiny-components/sidebar-form
+         *
+         */
+        export default {
+
+            handleClick() {
+                sidebarStore.trigger('open')
+            }
+
+        }
+
+    </script>
+</example-button>

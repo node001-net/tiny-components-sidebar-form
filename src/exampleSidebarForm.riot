@@ -1,0 +1,88 @@
+<example-sidebar-form>
+    <div class="m-top-4 m-bottom-4">
+        <tiny-sidebar-form form-id="example-form" open={ state.isOpen } close={ () => { handleClose() }} loading={ state.isLoading }>
+
+            <!-- slot:title -->
+            <span slot="title">
+                New
+            </span>
+
+            <!-- slot:header -->
+            <form id="example-form" class="form" slot="form" onsubmit={ (event) => { handleSubmit(event) }}>
+                <div class="field-group">
+                    <label class="field-label">
+                        Note
+                        <textarea class="field-text" name="name"></textarea>
+                    </label>
+                </div>
+            </form>
+
+        </tiny-sidebar-form>
+    </div>
+
+    <script>
+
+        // mixins
+        import sidebar from './sidebarFormMixin.js'
+
+        // store for sidebar
+        import sidebarStore from './exampleStore.js'
+
+        /**
+         *  example to show tiny-sidebar
+         *
+         *  @author Björn Hase
+         *  @license http://opensource.org/licenses/MIT The MIT License
+         *  @link https://gitea.node001.net/tiny-components/sidebar-form
+         *
+         */
+        export default () => {
+            return {
+
+                ...sidebar,  // adding basic funtion for sidebar
+
+                /**
+                 *
+                 *
+                 */
+                onMounted() {
+
+                    // adding event for open sidebar
+                    sidebarStore.on('open', () =>  {
+                        this.state.isOpen = true
+                        this.update()
+                    })
+
+                },
+
+                /**
+                 *
+                 *
+                 *  @param  {object} event
+                 *
+                 */
+                handleSubmit(event) {
+                    event.preventDefault()
+
+                    this.state.isLoading = true
+                    this.update()
+
+                    setTimeout(() => {
+
+                        // stop loading
+                        this.state.isLoading = false
+
+                        // if button has attribute close
+                        if (event.submitter.attributes.close) {
+                            this.handleClose()
+                        }
+
+                        this.update()
+
+                    }, 2500)
+                }
+            }
+        }
+
+    </script>
+</example-sidebar-form>
