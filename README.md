@@ -7,7 +7,7 @@ Handle Form in a Sidebar. Styles for Sidebar based on [Plain-UI](https://plain-u
 ## Changelog
 
 0.1.0 Init
-1.0.0 Remove "SidebarForm" and build a more basic Solution, that is also easier to adept 
+1.0.0 Remove "SidebarForm" and build a more basic Solution, that is also easier to adept
 
 ## Install
 
@@ -17,7 +17,7 @@ npm install @tiny-components\sidebar-form --save
 
 ## How to use
 
-Create your own Component and add tiny
+Create your own Component and add sidebarHeader & sidebarFooter,
 
 ```js
 <div class={ getCssClasses() }>
