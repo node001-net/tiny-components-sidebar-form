@@ -1,7 +1,7 @@
 /**
  *
  *
- *  
+ *
  */
 
 .sidebar {
@@ -20,5 +20,19 @@
                 transform: translate(-50%, -50%);
             }
         }
+    }
+
+    &__form {
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: calc(72px + 1.5em); // 72px is the minium height for footer
+    }
+
+    &__footer {
+        bottom: -1px;
+    }
+
+    .bar {
+        border-radius: 0;
     }
 }

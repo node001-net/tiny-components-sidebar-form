@@ -1,45 +1,67 @@
 <example-sidebar-form>
-    <div class="m-top-4 m-bottom-4">
-        <tiny-sidebar-form form-id="example-form" open={ state.isOpen } close={ () => { handleClose() }} loading={ state.isLoading }>
+    <div class={ getCssClasses() }>
+        <div class="sidebar__inner">
 
-            <!-- slot:title -->
-            <span slot="title">
-                New
-            </span>
+            <!-- header -->
+            <tiny-sidebar-form-header title="{ !state.current.note ? 'New' : 'Edit' }" close={ (event) => { handleClose(event) }}></tiny-sidebar-form-header>
 
-            <!-- slot:header -->
-            <form id="example-form" class="form" slot="form" onsubmit={ (event) => { handleSubmit(event) }}>
-                <div class="field-group">
-                    <label class="field-label">
-                        Note
-                        <textarea class="field-text" name="name"></textarea>
-                    </label>
-                </div>
-            </form>
+            <div class="sidebar__form">
+                <form class="form" novalidate method="post" onsubmit={ (event) => { handleSubmit(event) } }>
 
-        </tiny-sidebar-form>
+                    <!-- body -->
+                    <div class="sidebar__body">
+                        <div class="field-group">
+                            <label class="field-label">
+                                Note
+                                <textarea class="field-text" name="note"></textarea>
+                            </label>
+                        </div>
+
+                        <!-- loading -->
+                        <tiny-loading active={ state.isLoading }></tiny-loading>
+                    </div>
+
+                    <!-- footer -->
+                    <tiny-sidebar-form-footer active={ state.isLoading }></tiny-sidebar-form-footer>
+
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
 
-        // mixins
-        import sidebar from './sidebarFormMixin.js'
+        import * as riot from 'riot'
+
+        // adding TinyLoading
+        import TinyLoading from '@tiny-components/loading/src/loading.riot'
+        riot.register('tiny-loading', TinyLoading)
+
+        import sidebarHeader from './sidebarHeader.riot'
+        riot.register('tiny-sidebar-form-header', sidebarHeader)
+
+        import sidebarFooter from './sidebarFooter.riot'
+        riot.register('tiny-sidebar-form-footer', sidebarFooter)
 
         // store for sidebar
         import sidebarStore from './exampleStore.js'
 
+        // mixin to extend current component
+        import sidebarFormMixin from './sidebarFormMixin.js'
+
         /**
-         *  example to show tiny-sidebar
+         *  example sidebar-form
          *
          *  @author Björn Hase
          *  @license http://opensource.org/licenses/MIT The MIT License
          *  @link https://gitea.node001.net/tiny-components/sidebar-form
          *
          */
+
         export default () => {
             return {
 
-                ...sidebar,  // adding basic funtion for sidebar
+                ...sidebarFormMixin,  // adding basic funtion for sidebar
 
                 /**
                  *
@@ -56,7 +78,7 @@
                 },
 
                 /**
-                 *
+                 *  handle submit of form
                  *
                  *  @param  {object} event
                  *
@@ -80,6 +102,10 @@
                         this.update()
 
                     }, 2500)
+                },
+
+                reset() {
+
                 }
             }
         }

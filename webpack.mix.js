@@ -68,6 +68,9 @@ mix
     .sass('src/example.scss', 'example')
     .purgeCss({
         extend: {
+            safelist: [
+                /sidebar/
+            ],
             content: [
                 path.join(__dirname, 'src/**.riot'),
                 path.join(__dirname, 'example/index.html')

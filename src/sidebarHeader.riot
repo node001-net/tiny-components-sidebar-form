@@ -1,0 +1,14 @@
+<tiny-sidebar-form-header>
+    <div class="bar">
+        <div class="bar__main">
+            { props.title }
+        </div>
+        <div class="bar__end">
+            <button class="button button--icon button--hover-icon-contrast m-top-3 m-bottom-3" type="button" onclick={ props.close }>
+                <svg class="icon fill-danger" aria-hidden="true">
+                    <use xlink:href="/symbol-defs.svg#icon-close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</tiny-sidebar-form-header>

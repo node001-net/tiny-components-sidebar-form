@@ -1,6 +1,6 @@
 {
   "name": "@tiny-components/sidebar-form",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "sidebar to handle forms",
   "repository": {
     "type": "git",
@@ -12,14 +12,14 @@
     "@riotjs/observable": "^4.1.1",
     "@tiny-components/loading": "^0.1.0",
     "@tiny-components/plain-ui": "^0.6.0",
-    "riot": "^6.1.2"
+    "riot": "^7.0.6"
   },
   "devDependencies": {
     "@riotjs/webpack-loader": "^6.0.0",
     "laravel-mix": "^6.0.43",
     "laravel-mix-purgecss": "^6.0.0",
-    "sass": "^1.51.0",
+    "sass": "^1.54.9",
     "sass-loader": "^12.6.0",
-    "svg-spritemap-webpack-plugin": "^4.4.0"
+    "svg-spritemap-webpack-plugin": "^4.5.0"
   }
 }
