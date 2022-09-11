@@ -6,7 +6,7 @@ Handle Form in a Sidebar. Styles for Sidebar based on [Plain-UI](https://plain-u
 
 ## Changelog
 
-0.1.0 Init
+0.1.0 Init  
 1.0.0 Remove "SidebarForm" and build a more basic Solution, that is also easier to adept
 
 ## Install
